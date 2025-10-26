@@ -1,0 +1,23 @@
+.container1 {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.cartTitle {
+  font-weight: bold;
+  color: #333;
+}
+
+.cartItem {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cartItem:hover {
+  transform: scale(1.02);
+}
+
+.totalCard {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 10px;
+}

@@ -1,13 +1,24 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
+import { cookies, headers } from "next/headers";
 
-type Data = {
-  name: string;
-};
+export async function GET() {
+  const data = [{ id: 1, title: "T Shirt" }];
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>,
-) {
-  res.status(200).json({ name: "John Doe" });
+  const cookieList =await cookies();
+  const tokenCookie =cookieList.get("authToken");
+  console.log("tokenCookie:", tokenCookie);
+
+  return Response.json({ data });
+}
+
+export async function POST(request: Request) {
+  const prod = await request.json();
+  const cookieList =await cookies();
+  const tokenCookie = cookieList.get("authToken");
+  const headerList = headers();
+
+  console.log("Authorization:", (await headerList).get("Authorization"));
+
+  const data = [{ id: 1, title: "T Shirt", prod }];
+
+  return Response.json({ data });
 }
